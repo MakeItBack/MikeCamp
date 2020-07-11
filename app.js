@@ -88,10 +88,10 @@ app.use(function(req, res, next){
 // All routes have been moved to separate route files and then required and used in here
 // This uses the express router
 // Tell this app file to use the three separate router files that we have created (we also require them at the top)
-// We can add a first argument which is the common route structure that all the routes in the referenced file will use, then you can take out the full path in the route file. This dries up / simplifies the code a bit in these 3 route files. For example all campground routes will automatically start with /campgrounds. The indexRoutes use statement omits this argument because it's not needed as we are dealing with the root
+// We can add a first argument which is the common route structure that all the routes in the referenced file will use, then you can take out the full path in the route file. This dries up / simplifies the code a bit in these 3 route files. For example all campground routes will automatically start with /campgrounds. The indexRoutes use statement omits this argument because it's not needed as we are dealing with the root.
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-
+// Start the server
 app.listen(3000, process.env.IP, ()=>{console.log("Hooray we're going camping!!!");});
