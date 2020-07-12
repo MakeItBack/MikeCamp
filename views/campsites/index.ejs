@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	
+	<header class="jumbotron">
+		<h1><i class="fas fa-campground mr-3"></i>Welcome to MikeCamp</h1>
+		<p><%if (currentUser){ %>
+			<%-`Hello<strong class="text-info"> ${currentUser.username}</strong>!`%>
+			<% } else{ %>
+			Welcome!
+			<%}%>
+			Check out these, tried and tested, free bush camping spots in Victoria
+		</p>
+		<div>
+			<a class="btn btn-md btn-info"   href="/campgrounds/new">Add a New Campsite</a>
+			<audio controls loop="true" autoplay=true class="float-right border rounded-pill border-info" src="/audio/2017.06.04 Campfire.mp3">
+				Looks like you can't listen along
+				<!-- muted=true  -->
+			</audio>
+		</div>
+	</header>
+
+	<div class="col-lg-12 text-center">
+		<h6 class="text-muted mb-3">
+			All sites are free, with 2WD-access and toilets. 
+		</h6>
+	</div>
+	
+	<div class="row">
+		<% campsites.forEach((campsite)=>{ %>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="<%= campsite.image %>"  alt="<%= campsite.name %>">
+					<div class="card-body">
+						<h5 class="card-title"><%= campsite.name %></h5>
+						<h6 class="card-subtitle mb-2 text-muted"><%= campsite.location %></h6>
+						<a class="btn btn-md btn-info" href="/campgrounds/<%= campsite._id %>">Details</a> 
+							<!-- the button	directs to the 'show' page for the site. It populates with specific site data using the site ID inserted in the href -->
+					</div>
+				</div>
+			</div>	
+		<% }) %>
+	</div>
+
+
+<!-- Container div -->
+</div> 
+
+
+
+
+<%- include("../partials/footer") %>

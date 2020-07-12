@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MikeCamp</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+		<script src="https://kit.fontawesome.com/31eccee54f.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		
+	<!-- Navbar -->
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+			<a class="navbar-brand" href="/"><i class="fas fa-campground mr-2"></i>MikeCamp</a>
+
+			<div class="collapse navbar-collapse justify-content-end">
+		<!-- currentUser variable tells if user is loggin in or not and only displays appropriate nav items -->
+				<ul class="navbar-nav">
+					<% if (!currentUser){ %>
+						<li class="nav-item">
+							<a class="nav-link" href="/login">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/register">Sign-Up</a>
+						</li>
+					<% } else { %>
+						<li class="navbar-text text-light">
+							Logged in as <span class="text-info"> <%= currentUser.username %> </span>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/logout">Logout</a>
+						</li>
+					<% } %>
+				</ul>
+			</div>
+
+		</nav>
+	</div>
+	
+	<div class="container">
+		<!-- Flash-connect messages -->
+		<!-- The 'if' statements mean that the alert bars only display when a message is present in the (error or success) arrays. Otherwise the array is empty and the alert bars are not shown -->
+		<% if(success && success.length>0){	%>
+			<div class="alert alert-success text-center" role="alert"> <%= success %> </div>
+		<% } %>
+		<% if(error && error.length>0){ %>
+			<div class="alert alert-danger text-center" role="alert"> <%= error %> </div>
+		<% } %>
+	</div>
+	
