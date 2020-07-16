@@ -94,4 +94,13 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // Start the server
-app.listen(3000, process.env.IP, ()=>{console.log("Hooray we're going camping!!!");});
+// app.listen(3000, process.env.IP, ()=>{console.log("Hooray we're going camping!!!");});
+
+// Updated server code to work on Goorm AND Heroku
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
+
+
+
