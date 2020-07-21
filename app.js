@@ -1,4 +1,5 @@
-const 	express			= require("express"),
+require("dotenv").config();
+const	express			= require("express"),
 		app 			= express(),
 		mongoose 		= require("mongoose"),
 	  	flash			= require("connect-flash"),
@@ -16,7 +17,10 @@ const 	commentRoutes 		= require("./routes/comments"),
 	  	indexRoutes			= require("./routes/index")
 
 // Connect mongoose to our Mongo database and create a new collection in the db called MikeCamp
-mongoose.connect('mongodb://localhost:27017/MikeCamp', {useNewUrlParser: true, useUnifiedTopology: true} );
+// mongoose.connect('mongodb://localhost:27017/MikeCamp', {useNewUrlParser: true, useUnifiedTopology: true} );
+
+// We are now using an environment variable DATABASEURL so we can connect to 2 different databases, one for the local (developer) environment and one for production - which uses the Mongodb Atlas cloud db. The variable is set up on local using dotenv and in heroku using the config var settings.
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true} );
 
 // Fix depreciation error caused by findByIdAndUpdate
 mongoose.set('useFindAndModify', false);
@@ -98,9 +102,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 // Updated server code to work on Goorm AND Heroku
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
-});
+app.listen(PORT, () => {console.log(`MikeCamp is running on port ${ PORT }`);});
 
 
 
