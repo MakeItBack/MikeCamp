@@ -4,7 +4,7 @@ It was created as a version of 'YelpCamp', the final big project for The Web Dev
 
 **YelpCamp is a full-stack web app incorporating:**
 
-- **These Technologies:**
+- **This Tech:**
 nodejs, MongoDB, express, passport, bootstrap, mongoose, ejs templates, connect-flash, font-awesome, git
 
  - **These Features:**
