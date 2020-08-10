@@ -34,7 +34,7 @@ app.use(flash());
 // Serve up the public folder so we can make our stylesheets available. the __dirname part specifies the path as the same as the 'current' directory of this file
 app.use(express.static(__dirname + "/public"));
 
-app.use("/favicon.ico", express.static('public/favicon.ico'));
+app.use("/favicon.ico", express.static(__dirname + "/public/favicon.ico"));
 
 // Tell express to use method override for the routing
 app.use(methodOverride("_method"));
