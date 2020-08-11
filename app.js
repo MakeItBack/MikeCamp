@@ -1,5 +1,6 @@
 require("dotenv").config();
 const	express			= require("express"),
+		favicon 		= require("serve-favicon"),  
 		app 			= express(),
 		mongoose 		= require("mongoose"),
 	  	flash			= require("connect-flash"),
@@ -15,6 +16,9 @@ const	express			= require("express"),
 const 	commentRoutes 		= require("./routes/comments"),
 		campgroundRoutes 	= require("./routes/campgrounds"),
 	  	indexRoutes			= require("./routes/index")
+
+// Favicon
+app.use(favicon(__dirname + "/public/favicon.ico"));
 
 // Connect mongoose to our Mongo database and create a new collection in the db called MikeCamp
 // mongoose.connect('mongodb://localhost:27017/MikeCamp', {useNewUrlParser: true, useUnifiedTopology: true} );
@@ -33,8 +37,6 @@ app.use(flash());
 
 // Serve up the public folder so we can make our stylesheets available. the __dirname part specifies the path as the same as the 'current' directory of this file
 app.use(express.static(__dirname + "/public"));
-
-app.use("/favicon.ico", express.static(__dirname + "/public/favicon.ico"));
 
 // Tell express to use method override for the routing
 app.use(methodOverride("_method"));
