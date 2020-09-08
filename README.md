@@ -11,4 +11,6 @@ nodejs, MongoDB, express, passport, bootstrap, mongoose, ejs templates, connect-
 Authorisation, authentication, login/signup, comments, add/edit/delete, RESTful routes, partials, middleware<br>
 *More features still to come*
 
+![Animated screenshot](https://github.com/MakeItBack/MikeCamp/blob/master/Mikecamp.gif)
+
 [Deployed](https://mike-camp.herokuapp.com/) on Heroku and MongoDB Atlas.
